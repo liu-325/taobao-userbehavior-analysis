@@ -1,0 +1,17 @@
+﻿from_behavior,to_behavior,transitions
+pv,pv,808835
+cart,pv,44124
+pv,cart,44103
+fav,pv,21461
+pv,fav,21283
+pv,buy,14872
+buy,pv,14417
+cart,cart,9993
+fav,fav,5340
+buy,buy,3570
+buy,cart,1006
+cart,buy,863
+cart,fav,690
+fav,cart,650
+buy,fav,423
+fav,buy,307

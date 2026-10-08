@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "691f47577f2708577ae9",
+  "position": {
+    "x": 30,
+    "y": 15,
+    "z": 1,
+    "height": 45,
+    "width": 1100,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "用户价值分层：高价值复购用户贡献 41.73% 购买行为",
+                    "textStyle": {
+                      "fontSize": "24pt",
+                      "color": "#17324d",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,53 @@
+table RfmSegments
+	lineageTag: 01bd2def-080c-5349-a668-11e79df82435
+	column segment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: segment
+	column users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: users
+	column buy_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buy_actions
+	column engagement_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: engagement_actions
+	column avg_recency_days
+		dataType: double
+		summarizeBy: none
+		sourceColumn: avg_recency_days
+	column avg_buy_actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: avg_buy_actions
+	column user_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: user_share
+	column buy_action_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buy_action_share
+	measure '分群用户数' = SUM(RfmSegments[users])
+		formatString: #,##0
+		lineageTag: a3befa7b-81ee-5fd1-8be8-e5d302564659
+	measure '分群购买行为' = SUM(RfmSegments[buy_actions])
+		formatString: #,##0
+		lineageTag: 5a684c40-6675-50bb-80e2-67f7752d8878
+	measure '购买贡献' = SUM(RfmSegments[buy_action_share])
+		formatString: 0.00%
+		lineageTag: f42a8b72-d7f7-5228-a24a-ad5355ae0559
+	partition RfmSegments-5491de87 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/07_rfm_segments.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"segment", type text},{"users", Int64.Type},{"buy_actions", Int64.Type},{"engagement_actions", Int64.Type},{"avg_recency_days", type number},{"avg_buy_actions", type number},{"user_share", type number},{"buy_action_share", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

@@ -1,0 +1,31 @@
+table WeekendWeekday
+	lineageTag: 8edece19-2000-5f23-ba16-b591b87ce3e9
+	column segment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: segment
+	column units
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: units
+	column buyers
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: buyers
+	column buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buyer_rate
+	measure '周末工作日购买率' = AVERAGE(WeekendWeekday[buyer_rate])
+		formatString: 0.00%
+		lineageTag: cf762717-2882-52dd-af44-e1a982a29c10
+	partition WeekendWeekday-14fea538 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/09_weekend_user_day.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"segment", type text},{"units", Int64.Type},{"buyers", Int64.Type},{"buyer_rate", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

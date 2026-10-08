@@ -1,0 +1,22 @@
+{
+  "raw_rows": 100150807,
+  "users": 987994,
+  "items": 4162024,
+  "categories": 9439,
+  "behavior_types": 4,
+  "null_rows": 0.0,
+  "bad_behavior_rows": 0.0,
+  "min_ts": -2134949234,
+  "max_ts": 2122867355,
+  "pv_rows": 89716264.0,
+  "buy_rows": 2015839.0,
+  "cart_rows": 5530446.0,
+  "fav_rows": 2888258.0,
+  "min_date": "2017-11-25 00:00:00",
+  "max_date": "2017-12-03 00:00:00",
+  "valid_window_rows": "100095231",
+  "invalid_window_rows": "55576",
+  "negative_ts_rows": "318",
+  "before_2017_11_25_rows": "52830",
+  "after_2017_12_03_rows": "2428"
+}

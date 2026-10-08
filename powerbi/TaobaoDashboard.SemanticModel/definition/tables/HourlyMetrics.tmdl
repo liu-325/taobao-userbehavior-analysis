@@ -1,0 +1,55 @@
+table HourlyMetrics
+	lineageTag: b307e87e-9ecd-5882-bca3-375770c2c8f8
+	column event_hour
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: event_hour
+	column active_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: active_users
+	column buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buyer_users
+	column pv_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_actions
+	column buy_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buy_actions
+	column cart_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: cart_actions
+	column fav_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: fav_actions
+	column buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buyer_rate
+	column buy_actions_per_active_user
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buy_actions_per_active_user
+	column buy_to_pv_action_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: buy_to_pv_action_ratio
+	measure '小时购买行为' = SUM(HourlyMetrics[buy_actions])
+		formatString: #,##0
+		lineageTag: 3fb9f004-2370-535b-bd9c-0afd33dcb7ff
+	partition HourlyMetrics-887fe61b = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/04_hourly_metrics.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"event_hour", Int64.Type},{"active_users", Int64.Type},{"buyer_users", Int64.Type},{"pv_actions", Int64.Type},{"buy_actions", Int64.Type},{"cart_actions", Int64.Type},{"fav_actions", Int64.Type},{"buyer_rate", type number},{"buy_actions_per_active_user", type number},{"buy_to_pv_action_ratio", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

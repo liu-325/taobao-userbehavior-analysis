@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "167ecba33ca0b24d0672",
+  "position": {
+    "x": 60,
+    "y": 120,
+    "z": 4,
+    "height": 500,
+    "width": 560,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "funnel",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FunnelOverall"
+                    }
+                  },
+                  "Property": "stage"
+                }
+              },
+              "queryRef": "FunnelOverall.stage",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FunnelOverall"
+                    }
+                  },
+                  "Property": "漏斗用户数"
+                }
+              },
+              "queryRef": "FunnelOverall.漏斗用户数"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "FunnelOverall"
+                  }
+                },
+                "Property": "漏斗用户数"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

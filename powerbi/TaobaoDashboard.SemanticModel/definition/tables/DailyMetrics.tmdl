@@ -1,0 +1,56 @@
+table DailyMetrics
+	lineageTag: 58de3fa3-7831-55ab-9f16-ea5bf2fba022
+	column event_date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: event_date
+	column active_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: active_users
+	column buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buyer_users
+	column pv_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_actions
+	column buy_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buy_actions
+	column cart_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: cart_actions
+	column fav_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: fav_actions
+	column first_seen_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: first_seen_users
+	column buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buyer_rate
+	column buy_actions_per_active_user
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buy_actions_per_active_user
+	column buy_to_pv_action_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: buy_to_pv_action_ratio
+	partition DailyMetrics-b4b196e1 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/03_daily_metrics.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"event_date", type date},{"active_users", Int64.Type},{"buyer_users", Int64.Type},{"pv_actions", Int64.Type},{"buy_actions", Int64.Type},{"cart_actions", Int64.Type},{"fav_actions", Int64.Type},{"first_seen_users", Int64.Type},{"buyer_rate", type number},{"buy_actions_per_active_user", type number},{"buy_to_pv_action_ratio", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

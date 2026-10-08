@@ -1,0 +1,11 @@
+[
+  {"query": "overall_kpi", "seconds": 223.98, "rows": 1},
+  {"query": "behavior_mix", "seconds": 135.17, "rows": 4},
+  {"query": "funnel_strict", "seconds": 76.2, "rows": 3},
+  {"query": "daily_metrics", "seconds": 178.75, "rows": 9},
+  {"query": "hourly_metrics", "seconds": 119.85, "rows": 24},
+  {"query": "repurchase_window", "seconds": 84.58, "rows": 1},
+  {"query": "weekend_weekday_user_day", "seconds": 339.29, "rows": 2},
+  {"query": "rfm_window", "seconds": 103.6, "rows": 5},
+  {"query": "category_funnel_top20", "seconds": 409.09, "rows": 20}
+]

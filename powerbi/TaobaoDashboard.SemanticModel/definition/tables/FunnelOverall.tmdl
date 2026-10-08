@@ -1,0 +1,31 @@
+table FunnelOverall
+	lineageTag: dd393471-8b55-5795-a248-04867f36caad
+	column stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: stage
+	column stage_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: stage_users
+	column stage_to_next
+		dataType: double
+		summarizeBy: none
+		sourceColumn: stage_to_next
+	column stage_from_first
+		dataType: double
+		summarizeBy: none
+		sourceColumn: stage_from_first
+	measure '漏斗用户数' = SUM(FunnelOverall[stage_users])
+		formatString: #,##0
+		lineageTag: 3b7ae59c-c706-5040-a114-91566c4b48ea
+	partition FunnelOverall-01b73a20 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/05_funnel_overall.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"stage", type text},{"stage_users", Int64.Type},{"stage_to_next", type number},{"stage_from_first", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

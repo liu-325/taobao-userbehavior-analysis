@@ -1,0 +1,31 @@
+table DaypartRates
+	lineageTag: bb5e4a65-fed7-5434-ac11-c269e21ee0b7
+	column daypart
+		dataType: string
+		summarizeBy: none
+		sourceColumn: daypart
+	column units
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: units
+	column buyers
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: buyers
+	column buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buyer_rate
+	measure '时段购买率' = AVERAGE(DaypartRates[buyer_rate])
+		formatString: 0.00%
+		lineageTag: 1b56e301-e07d-5986-a4c3-98303e96733a
+	partition DaypartRates-778f67a0 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/10_hour_daypart_user_hour.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"daypart", type text},{"units", Int64.Type},{"buyers", Int64.Type},{"buyer_rate", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

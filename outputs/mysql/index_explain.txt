@@ -1,0 +1,7 @@
+=== WITH INDEX ===
+EXPLAIN
+-> Aggregate: count(0)  (cost=15e+6 rows=1) (actual time=38892..38892 rows=1 loops=1)\n    -> Filter: (taobao_userbehavior.fact_user_behavior.event_ts between 1511539200 and 1512316799)  (cost=10.1e+6 rows=49.9e+6) (actual time=0.0221..36864 rows=100e+6 loops=1)\n        -> Covering index range scan on fact_user_behavior using idx_ts_beh over (1511539200 <= event_ts <= 1512316799)  (cost=10.1e+6 rows=49.9e+6) (actual time=0.0205..33421 rows=100e+6 loops=1)\n
+
+=== IGNORE INDEX (FORCE FULL SCAN) ===
+EXPLAIN
+-> Aggregate: count(0)  (cost=11.4e+6 rows=1) (actual time=39950..39950 rows=1 loops=1)\n    -> Filter: (taobao_userbehavior.fact_user_behavior.event_ts between 1511539200 and 1512316799)  (cost=10.3e+6 rows=11.1e+6) (actual time=0.72..37923 rows=100e+6 loops=1)\n        -> Table scan on fact_user_behavior  (cost=10.3e+6 rows=99.8e+6) (actual time=0.719..34284 rows=100e+6 loops=1)\n

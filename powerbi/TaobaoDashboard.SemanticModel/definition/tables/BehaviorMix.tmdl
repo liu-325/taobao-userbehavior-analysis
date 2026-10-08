@@ -1,0 +1,32 @@
+table BehaviorMix
+	lineageTag: f23f48e4-7be8-51c1-a33d-b4947e9777d6
+	column behavior_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: behavior_type
+	column actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: actions
+	column users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: users
+	column items
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: items
+	column action_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: action_share
+	partition BehaviorMix-57e6957d = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/02_behavior_mix.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"behavior_type", type text},{"actions", Int64.Type},{"users", Int64.Type},{"items", Int64.Type},{"action_share", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

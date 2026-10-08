@@ -1,0 +1,85 @@
+table CategorySummary
+	lineageTag: 949e5f63-66c6-5381-9b8c-2c29271be6fd
+	column category_id
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: category_id
+	column actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: actions
+	column pv_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_users
+	column intent_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: intent_users
+	column buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buyer_users
+	column all_buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: all_buyer_users
+	column direct_buy_without_intent_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: direct_buy_without_intent_users
+	column pv_actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: pv_actions
+	column buy_actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buy_actions
+	column cart_actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: cart_actions
+	column fav_actions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: fav_actions
+	column pv_to_intent
+		dataType: double
+		summarizeBy: none
+		sourceColumn: pv_to_intent
+	column intent_to_buy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: intent_to_buy
+	column pv_to_buy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: pv_to_buy
+	column direct_buy_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: direct_buy_share
+	column buy_to_pv_action_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: buy_to_pv_action_ratio
+	measure '类目浏览用户' = SUM(CategorySummary[pv_users])
+		formatString: #,##0
+		lineageTag: 13071d56-e9eb-52d9-8033-7770f7eb3c3e
+	measure '类目购买用户' = SUM(CategorySummary[buyer_users])
+		formatString: #,##0
+		lineageTag: 707a6d7c-ef3d-509b-8da4-71608af527d5
+	measure '类目浏览购买率' = AVERAGE(CategorySummary[pv_to_buy])
+		formatString: 0.00%
+		lineageTag: 7012a190-c561-5a55-8fa9-fbc820e9f9dd
+	partition CategorySummary-02e8d409 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/06_funnel_by_category.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"category_id", Int64.Type},{"actions", type number},{"pv_users", Int64.Type},{"intent_users", Int64.Type},{"buyer_users", Int64.Type},{"all_buyer_users", Int64.Type},{"direct_buy_without_intent_users", Int64.Type},{"pv_actions", type number},{"buy_actions", type number},{"cart_actions", type number},{"fav_actions", type number},{"pv_to_intent", type number},{"intent_to_buy", type number},{"pv_to_buy", type number},{"direct_buy_share", type number},{"buy_to_pv_action_ratio", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

@@ -1,0 +1,91 @@
+table OverallKPI
+	lineageTag: 8eec6fc5-64c7-54d2-a7a9-902eaf15ec7a
+	column behaviors
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: behaviors
+	column active_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: active_users
+	column active_items
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: active_items
+	column active_categories
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: active_categories
+	column pv_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_actions
+	column buy_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buy_actions
+	column cart_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: cart_actions
+	column fav_actions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: fav_actions
+	column pv_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_users
+	column buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buyer_users
+	column intent_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: intent_users
+	column buyer_penetration
+		dataType: double
+		summarizeBy: none
+		sourceColumn: buyer_penetration
+	column pv_user_to_buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: pv_user_to_buyer_rate
+	column intent_user_to_buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: intent_user_to_buyer_rate
+	column buy_per_active_user
+		dataType: double
+		summarizeBy: none
+		sourceColumn: buy_per_active_user
+	column pv_per_active_user
+		dataType: double
+		summarizeBy: none
+		sourceColumn: pv_per_active_user
+	measure '行为总量' = SUM(OverallKPI[behaviors])
+		formatString: #,##0
+		lineageTag: 26144dc0-43ba-5122-873c-2d31745d0943
+	measure '活跃用户' = SUM(OverallKPI[active_users])
+		formatString: #,##0
+		lineageTag: fbe85f7f-cae8-5122-87a2-92cafd11564b
+	measure '购买用户' = SUM(OverallKPI[buyer_users])
+		formatString: #,##0
+		lineageTag: 332e9476-04a6-5775-838d-7101815766e5
+	measure '购买用户率' = DIVIDE([购买用户],[活跃用户])
+		formatString: 0.00%
+		lineageTag: 0c7432bd-fac4-554d-9f16-e367fbef21d7
+	measure '购买行为' = SUM(OverallKPI[buy_actions])
+		formatString: #,##0
+		lineageTag: 094af30e-5367-56d0-9850-52c5c29c53b1
+	partition OverallKPI-601c43f3 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/01_overall_kpi.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"behaviors", Int64.Type},{"active_users", Int64.Type},{"active_items", Int64.Type},{"active_categories", Int64.Type},{"pv_actions", Int64.Type},{"buy_actions", Int64.Type},{"cart_actions", Int64.Type},{"fav_actions", Int64.Type},{"pv_users", Int64.Type},{"buyer_users", Int64.Type},{"intent_users", Int64.Type},{"buyer_penetration", type number},{"pv_user_to_buyer_rate", type number},{"intent_user_to_buyer_rate", type number},{"buy_per_active_user", type number},{"pv_per_active_user", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

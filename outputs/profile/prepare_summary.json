@@ -1,0 +1,17 @@
+{
+  "raw_rows": 100150807,
+  "invalid_window_rows": 55576,
+  "valid_rows_before_dedup": 100095231,
+  "clean_rows": 100095182,
+  "exact_duplicate_rows_removed": 49,
+  "clean_user_count": 987991,
+  "clean_item_count": 4161138,
+  "clean_category_count": 9437,
+  "min_event_ts": 1511539200,
+  "max_event_ts": 1512316799,
+  "min_event_date": "2017-11-25",
+  "max_event_date": "2017-12-03",
+  "elapsed_sec": 37.5,
+  "parquet": "D:\\datasets\\UserBehavior\\prepared\\clean_events.parquet",
+  "tsv": "D:\\datasets\\UserBehavior\\prepared\\clean_events.tsv"
+}

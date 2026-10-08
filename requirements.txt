@@ -1,0 +1,10 @@
+pandas>=2.3
+numpy>=2.0
+duckdb>=1.4
+scipy>=1.14
+statsmodels>=0.14
+matplotlib>=3.9
+seaborn>=0.13
+pymysql>=1.1
+reportlab>=4.4
+openpyxl>=3.1

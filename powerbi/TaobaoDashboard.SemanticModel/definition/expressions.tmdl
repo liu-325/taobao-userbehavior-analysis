@@ -1,0 +1,4 @@
+expression DataFolder = "C:/Users/adm33/Desktop/数据分析/taobao-userbehavior-analysis/outputs/powerbi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a4869301-6d9c-539b-8723-9b551d2e0a0b
+
+	annotation PBI_ResultType = Text

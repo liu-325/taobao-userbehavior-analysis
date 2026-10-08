@@ -1,0 +1,17 @@
+{
+  "raw_rows": 100150807,
+  "invalid_window_rows": 55576,
+  "valid_rows_before_dedup": 100095231,
+  "exact_duplicate_rows_removed": 49,
+  "clean_rows": 100095182,
+  "clean_users": 987991,
+  "clean_items": 4161138,
+  "clean_categories": 9437,
+  "behavior_mix": {
+    "pv": 89660671,
+    "cart": 5530446,
+    "fav": 2888258,
+    "buy": 2015807
+  },
+  "paucity_note": "原始数据无价格/订单金额，无法计算 GMV；用购买行为次数与购买用户数替代。"
+}

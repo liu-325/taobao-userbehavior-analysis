@@ -1,0 +1,40 @@
+table TopCategory
+	lineageTag: ef9dbca0-f47f-53c7-9b24-f91ff24eee55
+	column category_label
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category_label
+	column category_id
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: category_id
+	column pv_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: pv_users
+	column intent_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: intent_users
+	column buyer_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: buyer_users
+	column pv_to_buy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: pv_to_buy
+	column intent_to_buy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: intent_to_buy
+	partition TopCategory-f901eea3 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/top_category_dashboard.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"category_label", type text},{"category_id", Int64.Type},{"pv_users", Int64.Type},{"intent_users", Int64.Type},{"buyer_users", Int64.Type},{"pv_to_buy", type number},{"intent_to_buy", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

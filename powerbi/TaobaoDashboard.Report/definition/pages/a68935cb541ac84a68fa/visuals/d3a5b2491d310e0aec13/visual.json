@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "d3a5b2491d310e0aec13",
+  "position": {
+    "x": 30,
+    "y": 60,
+    "z": 1,
+    "height": 30,
+    "width": 1200,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "严格包含式口径：下一层用户必须同时具备上一层行为。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#687381",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

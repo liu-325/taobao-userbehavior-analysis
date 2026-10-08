@@ -1,0 +1,1428 @@
+{
+  "all_match": true,
+  "checks": [
+    {
+      "check": "overall.behaviors",
+      "python": 100095182.0,
+      "mysql": 100095182.0,
+      "match": true
+    },
+    {
+      "check": "overall.active_users",
+      "python": 987991.0,
+      "mysql": 987991.0,
+      "match": true
+    },
+    {
+      "check": "overall.active_items",
+      "python": 4161138.0,
+      "mysql": 4161138.0,
+      "match": true
+    },
+    {
+      "check": "overall.active_categories",
+      "python": 9437.0,
+      "mysql": 9437.0,
+      "match": true
+    },
+    {
+      "check": "overall.pv_actions",
+      "python": 89660671.0,
+      "mysql": 89660671.0,
+      "match": true
+    },
+    {
+      "check": "overall.buy_actions",
+      "python": 2015807.0,
+      "mysql": 2015807.0,
+      "match": true
+    },
+    {
+      "check": "overall.cart_actions",
+      "python": 5530446.0,
+      "mysql": 5530446.0,
+      "match": true
+    },
+    {
+      "check": "overall.fav_actions",
+      "python": 2888258.0,
+      "mysql": 2888258.0,
+      "match": true
+    },
+    {
+      "check": "behavior.pv.actions",
+      "python": 89660671.0,
+      "mysql": 89660671.0,
+      "match": true
+    },
+    {
+      "check": "behavior.cart.actions",
+      "python": 5530446.0,
+      "mysql": 5530446.0,
+      "match": true
+    },
+    {
+      "check": "behavior.fav.actions",
+      "python": 2888258.0,
+      "mysql": 2888258.0,
+      "match": true
+    },
+    {
+      "check": "behavior.buy.actions",
+      "python": 2015807.0,
+      "mysql": 2015807.0,
+      "match": true
+    },
+    {
+      "check": "funnel.浏览用户",
+      "python": 984105.0,
+      "mysql": 984105.0,
+      "match": true
+    },
+    {
+      "check": "funnel.收藏/加购用户",
+      "python": 855498.0,
+      "mysql": 855498.0,
+      "match": true
+    },
+    {
+      "check": "funnel.购买用户",
+      "python": 600278.0,
+      "mysql": 600278.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 706641.0,
+      "mysql": 706641.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 715516.0,
+      "mysql": 715516.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 710094.0,
+      "mysql": 710094.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 709257.0,
+      "mysql": 709257.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 718922.0,
+      "mysql": 718922.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 730597.0,
+      "mysql": 730597.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 740139.0,
+      "mysql": 740139.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 970401.0,
+      "mysql": 970401.0,
+      "match": true
+    },
+    {
+      "check": "daily.active_users",
+      "python": 966977.0,
+      "mysql": 966977.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 132622.0,
+      "mysql": 132622.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 136048.0,
+      "mysql": 136048.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 146934.0,
+      "mysql": 146934.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 139845.0,
+      "mysql": 139845.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 146220.0,
+      "mysql": 146220.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 146128.0,
+      "mysql": 146128.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 139971.0,
+      "mysql": 139971.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 174487.0,
+      "mysql": 174487.0,
+      "match": true
+    },
+    {
+      "check": "daily.buyer_users",
+      "python": 173225.0,
+      "mysql": 173225.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9353416.0,
+      "mysql": 9353416.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9567422.0,
+      "mysql": 9567422.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9041186.0,
+      "mysql": 9041186.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 8842932.0,
+      "mysql": 8842932.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9210820.0,
+      "mysql": 9210820.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9358998.0,
+      "mysql": 9358998.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 9718956.0,
+      "mysql": 9718956.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 12329641.0,
+      "mysql": 12329641.0,
+      "match": true
+    },
+    {
+      "check": "daily.pv_actions",
+      "python": 12237300.0,
+      "mysql": 12237300.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 201144.0,
+      "mysql": 201144.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 205638.0,
+      "mysql": 205638.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 226834.0,
+      "mysql": 226834.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 211997.0,
+      "mysql": 211997.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 223068.0,
+      "mysql": 223068.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 221459.0,
+      "mysql": 221459.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 210010.0,
+      "mysql": 210010.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 257903.0,
+      "mysql": 257903.0,
+      "match": true
+    },
+    {
+      "check": "daily.buy_actions",
+      "python": 257754.0,
+      "mysql": 257754.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 318390.0,
+      "mysql": 318390.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 167416.0,
+      "mysql": 167416.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 98335.0,
+      "mysql": 98335.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 71415.0,
+      "mysql": 71415.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 64213.0,
+      "mysql": 64213.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 84444.0,
+      "mysql": 84444.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 179928.0,
+      "mysql": 179928.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 329994.0,
+      "mysql": 329994.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 444398.0,
+      "mysql": 444398.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 520529.0,
+      "mysql": 520529.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 577797.0,
+      "mysql": 577797.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 587526.0,
+      "mysql": 587526.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 593649.0,
+      "mysql": 593649.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 602301.0,
+      "mysql": 602301.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 593591.0,
+      "mysql": 593591.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 603739.0,
+      "mysql": 603739.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 598367.0,
+      "mysql": 598367.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 585508.0,
+      "mysql": 585508.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 583797.0,
+      "mysql": 583797.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 624683.0,
+      "mysql": 624683.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 663343.0,
+      "mysql": 663343.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 682751.0,
+      "mysql": 682751.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 649704.0,
+      "mysql": 649704.0,
+      "match": true
+    },
+    {
+      "check": "hourly.active_users",
+      "python": 514021.0,
+      "mysql": 514021.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 38928.0,
+      "mysql": 38928.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 15885.0,
+      "mysql": 15885.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 8274.0,
+      "mysql": 8274.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 5595.0,
+      "mysql": 5595.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 4723.0,
+      "mysql": 4723.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 5963.0,
+      "mysql": 5963.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 13963.0,
+      "mysql": 13963.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 29216.0,
+      "mysql": 29216.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 49285.0,
+      "mysql": 49285.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 71632.0,
+      "mysql": 71632.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 92853.0,
+      "mysql": 92853.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 89500.0,
+      "mysql": 89500.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 87699.0,
+      "mysql": 87699.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 90447.0,
+      "mysql": 90447.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 89200.0,
+      "mysql": 89200.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 89392.0,
+      "mysql": 89392.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 85438.0,
+      "mysql": 85438.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 75819.0,
+      "mysql": 75819.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 73158.0,
+      "mysql": 73158.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 85920.0,
+      "mysql": 85920.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 98084.0,
+      "mysql": 98084.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 104573.0,
+      "mysql": 104573.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 97521.0,
+      "mysql": 97521.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buyer_users",
+      "python": 69485.0,
+      "mysql": 69485.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 3056935.0,
+      "mysql": 3056935.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 1421673.0,
+      "mysql": 1421673.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 769269.0,
+      "mysql": 769269.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 524992.0,
+      "mysql": 524992.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 449628.0,
+      "mysql": 449628.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 581694.0,
+      "mysql": 581694.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 1226653.0,
+      "mysql": 1226653.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 2228959.0,
+      "mysql": 2228959.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 3042342.0,
+      "mysql": 3042342.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 3728498.0,
+      "mysql": 3728498.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4334810.0,
+      "mysql": 4334810.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4213518.0,
+      "mysql": 4213518.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4255794.0,
+      "mysql": 4255794.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4653933.0,
+      "mysql": 4653933.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4642054.0,
+      "mysql": 4642054.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4806704.0,
+      "mysql": 4806704.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4607743.0,
+      "mysql": 4607743.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4203395.0,
+      "mysql": 4203395.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 4313516.0,
+      "mysql": 4313516.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 5430878.0,
+      "mysql": 5430878.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 6586331.0,
+      "mysql": 6586331.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 7538382.0,
+      "mysql": 7538382.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 7443069.0,
+      "mysql": 7443069.0,
+      "match": true
+    },
+    {
+      "check": "hourly.pv_actions",
+      "python": 5599901.0,
+      "mysql": 5599901.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 57775.0,
+      "mysql": 57775.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 23169.0,
+      "mysql": 23169.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 12012.0,
+      "mysql": 12012.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 8025.0,
+      "mysql": 8025.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 6748.0,
+      "mysql": 6748.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 8135.0,
+      "mysql": 8135.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 18014.0,
+      "mysql": 18014.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 37679.0,
+      "mysql": 37679.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 64916.0,
+      "mysql": 64916.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 96134.0,
+      "mysql": 96134.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 127932.0,
+      "mysql": 127932.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 122046.0,
+      "mysql": 122046.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 118591.0,
+      "mysql": 118591.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 123426.0,
+      "mysql": 123426.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 122171.0,
+      "mysql": 122171.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 122728.0,
+      "mysql": 122728.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 116444.0,
+      "mysql": 116444.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 101300.0,
+      "mysql": 101300.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 95907.0,
+      "mysql": 95907.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 115032.0,
+      "mysql": 115032.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 133859.0,
+      "mysql": 133859.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 145431.0,
+      "mysql": 145431.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 138263.0,
+      "mysql": 138263.0,
+      "match": true
+    },
+    {
+      "check": "hourly.buy_actions",
+      "python": 100070.0,
+      "mysql": 100070.0,
+      "match": true
+    },
+    {
+      "check": "repurchase.buyers",
+      "python": 672404.0,
+      "mysql": 672404.0,
+      "match": true
+    },
+    {
+      "check": "repurchase.repeat_buyers",
+      "python": 443858.0,
+      "mysql": 443858.0,
+      "match": true
+    },
+    {
+      "check": "repurchase.one_time_buyers",
+      "python": 228546.0,
+      "mysql": 228546.0,
+      "match": true
+    },
+    {
+      "check": "repurchase.avg_buy_actions_per_buyer",
+      "python": 2.99791,
+      "mysql": 2.9979,
+      "match": true
+    },
+    {
+      "check": "weekend.周末.units",
+      "python": 3359535.0,
+      "mysql": 3359535.0,
+      "match": true
+    },
+    {
+      "check": "weekend.周末.buyers",
+      "python": 616382.0,
+      "mysql": 616382.0,
+      "match": true
+    },
+    {
+      "check": "weekend.周末.rate",
+      "python": 0.183472,
+      "mysql": 0.1835,
+      "match": true
+    },
+    {
+      "check": "weekend.工作日.units",
+      "python": 3609009.0,
+      "mysql": 3609009.0,
+      "match": true
+    },
+    {
+      "check": "weekend.工作日.buyers",
+      "python": 719098.0,
+      "mysql": 719098.0,
+      "match": true
+    },
+    {
+      "check": "weekend.工作日.rate",
+      "python": 0.199251,
+      "mysql": 0.1993,
+      "match": true
+    },
+    {
+      "check": "category.4756105.pv_users",
+      "python": 410410.0,
+      "mysql": 410410.0,
+      "match": true
+    },
+    {
+      "check": "category.4756105.intent_users",
+      "python": 133914.0,
+      "mysql": 133914.0,
+      "match": true
+    },
+    {
+      "check": "category.4756105.buyer_users",
+      "python": 16058.0,
+      "mysql": 16058.0,
+      "match": true
+    },
+    {
+      "check": "category.4756105.intent_to_buy",
+      "python": 0.119913,
+      "mysql": 0.1199,
+      "match": true
+    },
+    {
+      "check": "category.982926.pv_users",
+      "python": 392746.0,
+      "mysql": 392746.0,
+      "match": true
+    },
+    {
+      "check": "category.982926.intent_users",
+      "python": 114508.0,
+      "mysql": 114508.0,
+      "match": true
+    },
+    {
+      "check": "category.982926.buyer_users",
+      "python": 12230.0,
+      "mysql": 12230.0,
+      "match": true
+    },
+    {
+      "check": "category.982926.intent_to_buy",
+      "python": 0.106805,
+      "mysql": 0.1068,
+      "match": true
+    },
+    {
+      "check": "category.4145813.pv_users",
+      "python": 368450.0,
+      "mysql": 368450.0,
+      "match": true
+    },
+    {
+      "check": "category.4145813.intent_users",
+      "python": 119624.0,
+      "mysql": 119624.0,
+      "match": true
+    },
+    {
+      "check": "category.4145813.buyer_users",
+      "python": 16438.0,
+      "mysql": 16438.0,
+      "match": true
+    },
+    {
+      "check": "category.4145813.intent_to_buy",
+      "python": 0.137414,
+      "mysql": 0.1374,
+      "match": true
+    },
+    {
+      "check": "category.2355072.pv_users",
+      "python": 361785.0,
+      "mysql": 361785.0,
+      "match": true
+    },
+    {
+      "check": "category.2355072.intent_users",
+      "python": 90969.0,
+      "mysql": 90969.0,
+      "match": true
+    },
+    {
+      "check": "category.2355072.buyer_users",
+      "python": 6900.0,
+      "mysql": 6900.0,
+      "match": true
+    },
+    {
+      "check": "category.2355072.intent_to_buy",
+      "python": 0.07585,
+      "mysql": 0.0759,
+      "match": true
+    },
+    {
+      "check": "category.1320293.pv_users",
+      "python": 343972.0,
+      "mysql": 343972.0,
+      "match": true
+    },
+    {
+      "check": "category.1320293.intent_users",
+      "python": 80453.0,
+      "mysql": 80453.0,
+      "match": true
+    },
+    {
+      "check": "category.1320293.buyer_users",
+      "python": 7623.0,
+      "mysql": 7623.0,
+      "match": true
+    },
+    {
+      "check": "category.1320293.intent_to_buy",
+      "python": 0.094751,
+      "mysql": 0.0948,
+      "match": true
+    },
+    {
+      "check": "category.3607361.pv_users",
+      "python": 331737.0,
+      "mysql": 331737.0,
+      "match": true
+    },
+    {
+      "check": "category.3607361.intent_users",
+      "python": 79415.0,
+      "mysql": 79415.0,
+      "match": true
+    },
+    {
+      "check": "category.3607361.buyer_users",
+      "python": 6765.0,
+      "mysql": 6765.0,
+      "match": true
+    },
+    {
+      "check": "category.3607361.intent_to_buy",
+      "python": 0.085185,
+      "mysql": 0.0852,
+      "match": true
+    },
+    {
+      "check": "category.4801426.pv_users",
+      "python": 321351.0,
+      "mysql": 321351.0,
+      "match": true
+    },
+    {
+      "check": "category.4801426.intent_users",
+      "python": 90368.0,
+      "mysql": 90368.0,
+      "match": true
+    },
+    {
+      "check": "category.4801426.buyer_users",
+      "python": 12669.0,
+      "mysql": 12669.0,
+      "match": true
+    },
+    {
+      "check": "category.4801426.intent_to_buy",
+      "python": 0.140193,
+      "mysql": 0.1402,
+      "match": true
+    },
+    {
+      "check": "category.2520377.pv_users",
+      "python": 297244.0,
+      "mysql": 297244.0,
+      "match": true
+    },
+    {
+      "check": "category.2520377.intent_users",
+      "python": 71019.0,
+      "mysql": 71019.0,
+      "match": true
+    },
+    {
+      "check": "category.2520377.buyer_users",
+      "python": 4900.0,
+      "mysql": 4900.0,
+      "match": true
+    },
+    {
+      "check": "category.2520377.intent_to_buy",
+      "python": 0.068996,
+      "mysql": 0.069,
+      "match": true
+    },
+    {
+      "check": "category.2465336.pv_users",
+      "python": 262536.0,
+      "mysql": 262536.0,
+      "match": true
+    },
+    {
+      "check": "category.2465336.intent_users",
+      "python": 64621.0,
+      "mysql": 64621.0,
+      "match": true
+    },
+    {
+      "check": "category.2465336.buyer_users",
+      "python": 6511.0,
+      "mysql": 6511.0,
+      "match": true
+    },
+    {
+      "check": "category.2465336.intent_to_buy",
+      "python": 0.100757,
+      "mysql": 0.1008,
+      "match": true
+    },
+    {
+      "check": "category.3002561.pv_users",
+      "python": 255728.0,
+      "mysql": 255728.0,
+      "match": true
+    },
+    {
+      "check": "category.3002561.intent_users",
+      "python": 65691.0,
+      "mysql": 65691.0,
+      "match": true
+    },
+    {
+      "check": "category.3002561.buyer_users",
+      "python": 7535.0,
+      "mysql": 7535.0,
+      "match": true
+    },
+    {
+      "check": "category.3002561.intent_to_buy",
+      "python": 0.114704,
+      "mysql": 0.1147,
+      "match": true
+    },
+    {
+      "check": "category.2735466.pv_users",
+      "python": 255222.0,
+      "mysql": 255222.0,
+      "match": true
+    },
+    {
+      "check": "category.2735466.intent_users",
+      "python": 65057.0,
+      "mysql": 65057.0,
+      "match": true
+    },
+    {
+      "check": "category.2735466.buyer_users",
+      "python": 12802.0,
+      "mysql": 12802.0,
+      "match": true
+    },
+    {
+      "check": "category.2735466.intent_to_buy",
+      "python": 0.196781,
+      "mysql": 0.1968,
+      "match": true
+    },
+    {
+      "check": "category.1080785.pv_users",
+      "python": 226441.0,
+      "mysql": 226441.0,
+      "match": true
+    },
+    {
+      "check": "category.1080785.intent_users",
+      "python": 39782.0,
+      "mysql": 39782.0,
+      "match": true
+    },
+    {
+      "check": "category.1080785.buyer_users",
+      "python": 2202.0,
+      "mysql": 2202.0,
+      "match": true
+    },
+    {
+      "check": "category.1080785.intent_to_buy",
+      "python": 0.055352,
+      "mysql": 0.0554,
+      "match": true
+    },
+    {
+      "check": "category.4217906.pv_users",
+      "python": 201052.0,
+      "mysql": 201052.0,
+      "match": true
+    },
+    {
+      "check": "category.4217906.intent_users",
+      "python": 46918.0,
+      "mysql": 46918.0,
+      "match": true
+    },
+    {
+      "check": "category.4217906.buyer_users",
+      "python": 6462.0,
+      "mysql": 6462.0,
+      "match": true
+    },
+    {
+      "check": "category.4217906.intent_to_buy",
+      "python": 0.13773,
+      "mysql": 0.1377,
+      "match": true
+    },
+    {
+      "check": "category.149192.pv_users",
+      "python": 197028.0,
+      "mysql": 197028.0,
+      "match": true
+    },
+    {
+      "check": "category.149192.intent_users",
+      "python": 48374.0,
+      "mysql": 48374.0,
+      "match": true
+    },
+    {
+      "check": "category.149192.buyer_users",
+      "python": 5407.0,
+      "mysql": 5407.0,
+      "match": true
+    },
+    {
+      "check": "category.149192.intent_to_buy",
+      "python": 0.111775,
+      "mysql": 0.1118,
+      "match": true
+    },
+    {
+      "check": "category.2520771.pv_users",
+      "python": 176130.0,
+      "mysql": 176130.0,
+      "match": true
+    },
+    {
+      "check": "category.2520771.intent_users",
+      "python": 34071.0,
+      "mysql": 34071.0,
+      "match": true
+    },
+    {
+      "check": "category.2520771.buyer_users",
+      "python": 4245.0,
+      "mysql": 4245.0,
+      "match": true
+    },
+    {
+      "check": "category.2520771.intent_to_buy",
+      "python": 0.124593,
+      "mysql": 0.1246,
+      "match": true
+    },
+    {
+      "check": "category.1464116.pv_users",
+      "python": 170789.0,
+      "mysql": 170789.0,
+      "match": true
+    },
+    {
+      "check": "category.1464116.intent_users",
+      "python": 43931.0,
+      "mysql": 43931.0,
+      "match": true
+    },
+    {
+      "check": "category.1464116.buyer_users",
+      "python": 10296.0,
+      "mysql": 10296.0,
+      "match": true
+    },
+    {
+      "check": "category.1464116.intent_to_buy",
+      "python": 0.234368,
+      "mysql": 0.2344,
+      "match": true
+    },
+    {
+      "check": "category.4181361.pv_users",
+      "python": 166701.0,
+      "mysql": 166701.0,
+      "match": true
+    },
+    {
+      "check": "category.4181361.intent_users",
+      "python": 45032.0,
+      "mysql": 45032.0,
+      "match": true
+    },
+    {
+      "check": "category.4181361.buyer_users",
+      "python": 4034.0,
+      "mysql": 4034.0,
+      "match": true
+    },
+    {
+      "check": "category.4181361.intent_to_buy",
+      "python": 0.089581,
+      "mysql": 0.0896,
+      "match": true
+    },
+    {
+      "check": "category.2920476.pv_users",
+      "python": 164820.0,
+      "mysql": 164820.0,
+      "match": true
+    },
+    {
+      "check": "category.2920476.intent_users",
+      "python": 26750.0,
+      "mysql": 26750.0,
+      "match": true
+    },
+    {
+      "check": "category.2920476.buyer_users",
+      "python": 1311.0,
+      "mysql": 1311.0,
+      "match": true
+    },
+    {
+      "check": "category.2920476.intent_to_buy",
+      "python": 0.049009,
+      "mysql": 0.049,
+      "match": true
+    },
+    {
+      "check": "category.154040.pv_users",
+      "python": 150102.0,
+      "mysql": 150102.0,
+      "match": true
+    },
+    {
+      "check": "category.154040.intent_users",
+      "python": 24187.0,
+      "mysql": 24187.0,
+      "match": true
+    },
+    {
+      "check": "category.154040.buyer_users",
+      "python": 1211.0,
+      "mysql": 1211.0,
+      "match": true
+    },
+    {
+      "check": "category.154040.intent_to_buy",
+      "python": 0.050068,
+      "mysql": 0.0501,
+      "match": true
+    },
+    {
+      "check": "category.2885642.pv_users",
+      "python": 148345.0,
+      "mysql": 148345.0,
+      "match": true
+    },
+    {
+      "check": "category.2885642.intent_users",
+      "python": 41897.0,
+      "mysql": 41897.0,
+      "match": true
+    },
+    {
+      "check": "category.2885642.buyer_users",
+      "python": 10737.0,
+      "mysql": 10737.0,
+      "match": true
+    },
+    {
+      "check": "category.2885642.intent_to_buy",
+      "python": 0.256271,
+      "mysql": 0.2563,
+      "match": true
+    }
+  ],
+  "count": 237
+}

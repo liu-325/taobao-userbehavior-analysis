@@ -1,0 +1,28 @@
+table TimeSegment
+	lineageTag: 6adb571d-a286-584a-a853-ceabeb7e9bb7
+	column day_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: day_type
+	column units
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: units
+	column buyers
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: buyers
+	column buyer_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: buyer_rate
+	partition TimeSegment-db548db9 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/time_segment_dashboard.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"day_type", type text},{"units", Int64.Type},{"buyers", Int64.Type},{"buyer_rate", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

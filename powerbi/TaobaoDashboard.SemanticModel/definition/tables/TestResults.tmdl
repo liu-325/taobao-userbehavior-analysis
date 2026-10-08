@@ -1,0 +1,96 @@
+table TestResults
+	lineageTag: d5d886c1-6a1b-546b-b5ef-2db70e7e7b53
+	column comparison
+		dataType: string
+		summarizeBy: none
+		sourceColumn: comparison
+	column unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: unit
+	column group_a
+		dataType: string
+		summarizeBy: none
+		sourceColumn: group_a
+	column n_a
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: n_a
+	column success_a
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: success_a
+	column rate_a
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: rate_a
+	column group_b
+		dataType: string
+		summarizeBy: none
+		sourceColumn: group_b
+	column n_b
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: n_b
+	column success_b
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: success_b
+	column rate_b
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: rate_b
+	column rate_difference_pp
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: rate_difference_pp
+	column ci95_low_pp
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ci95_low_pp
+	column ci95_high_pp
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ci95_high_pp
+	column relative_lift_pct
+		dataType: double
+		summarizeBy: none
+		sourceColumn: relative_lift_pct
+	column risk_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: risk_ratio
+	column odds_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: odds_ratio
+	column cohens_h
+		dataType: double
+		summarizeBy: none
+		sourceColumn: cohens_h
+	column z_stat
+		dataType: double
+		summarizeBy: none
+		sourceColumn: z_stat
+	column z_p_value
+		dataType: double
+		summarizeBy: none
+		sourceColumn: z_p_value
+	column chi2_stat
+		dataType: double
+		summarizeBy: none
+		sourceColumn: chi2_stat
+	column chi2_p_value
+		dataType: double
+		summarizeBy: none
+		sourceColumn: chi2_p_value
+	partition TestResults-378a5d47 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/11_statistical_tests.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"comparison", type text},{"unit", type text},{"group_a", type text},{"n_a", Int64.Type},{"success_a", Int64.Type},{"rate_a", type number},{"group_b", type text},{"n_b", Int64.Type},{"success_b", Int64.Type},{"rate_b", type number},{"rate_difference_pp", type number},{"ci95_low_pp", type number},{"ci95_high_pp", type number},{"relative_lift_pct", type number},{"risk_ratio", type number},{"odds_ratio", type number},{"cohens_h", type number},{"z_stat", type number},{"z_p_value", type number},{"chi2_stat", type number},{"chi2_p_value", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

@@ -1,0 +1,16 @@
+data/
+*.duckdb
+*.csv.zip
+clean_events*.tsv
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+
+outputs/powerbi/user_value_scores.csv
+outputs/powerbi_screenshots/
+
+
+reports/_check/
+powerbi/screenshots/PBIX*.png
+

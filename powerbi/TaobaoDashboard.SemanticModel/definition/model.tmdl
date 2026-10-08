@@ -1,0 +1,17 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	annotation PBI_ProTooling = ["TMDLView_Desktop"]
+ref table OverallKPI
+ref table BehaviorMix
+ref table DailyMetrics
+ref table HourlyMetrics
+ref table FunnelOverall
+ref table CategorySummary
+ref table RfmSegments
+ref table WeekendWeekday
+ref table DaypartRates
+ref table TestResults
+ref table TopCategory
+ref table TimeSegment
