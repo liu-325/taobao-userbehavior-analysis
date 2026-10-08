@@ -45,7 +45,7 @@ def card(ax, title, value, note, color):
 fig = plt.figure(figsize=(16,9)); gs = fig.add_gridspec(4,4,hspace=.65,wspace=.45)
 fig.suptitle('淘宝用户行为全链路经营看板 · 经营总览', x=.04, y=.97, ha='left', fontsize=22, weight='bold', color=NAVY)
 fig.text(.04,.925,'口径：2017-11-25 至 2017-12-03（中国时区）｜清洗后 100,095,182 条行为｜数据无价格字段，不计算 GMV',fontsize=10,color=GRAY)
-cards=[('行为总量',f"{int(kpi.behaviors):,}",'清洗后全量',''),('活跃用户',f"{int(kpi.active_users):,}",'去重用户',BLUE),('购买用户',f"{int(kpi.buyer_users):,}",f"占活跃用户 {kpi.buyer_penetration:.1%}",TEAL),('严格漏斗购买率',f"{funnel.stage_users.iloc[-1]/funnel.stage_users.iloc[0]:.1%}",'浏览→收藏/加购→购买',ORANGE)]
+cards=[('行为总量',f"{int(kpi.behaviors):,}",'清洗后全量',''),('活跃用户',f"{int(kpi.active_users):,}",'去重用户',BLUE),('购买用户',f"{int(kpi.buyer_users):,}",f"占活跃用户 {kpi.buyer_penetration:.1%}",TEAL),('集合交集购买率',f"{funnel.stage_users.iloc[-1]/funnel.stage_users.iloc[0]:.1%}",'浏览→收藏/加购→购买',ORANGE)]
 for i,(a,b,c,d) in enumerate(cards):
     ax=fig.add_subplot(gs[0,i]); card(ax,a,b,c,d or NAVY)
 ax=fig.add_subplot(gs[1:3,:2]); ax.plot(daily.event_date,daily.active_users,marker='o',lw=2.6,color=BLUE,label='活跃用户'); ax.set_title('逐日活跃用户',loc='left',weight='bold',color=NAVY); ax.yaxis.set_major_formatter(mtick.StrMethodFormatter('{x:,.0f}')); ax.grid(axis='y',alpha=.2); ax.legend(frameon=False)

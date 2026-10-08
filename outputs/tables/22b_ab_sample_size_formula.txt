@@ -1,0 +1,17 @@
+A/B 样本量计算过程
+基线 p1 = 600,278 / 855,498 = 0.7016708397
+绝对 MDE = +0.01，目标 p2 = 0.7116708397
+H = 2 * (arcsin(sqrt(p1)) - arcsin(sqrt(p2)))
+n_each = ((z_{1-alpha/2} + z_{1-beta}) / H)^2
+alpha = 0.05, power = 0.80, two-sided, 1:1
+
+Python 复算：
+from statsmodels.stats.power import NormalIndPower
+from statsmodels.stats.proportion import proportion_effectsize
+h = proportion_effectsize(0.7016708397, 0.7116708397)
+n = NormalIndPower().solve_power(effect_size=h, alpha=0.05, power=0.80, ratio=1, alternative='two-sided')
+ceil(n) = 32,538 per group；total = 65,076
+
+相对 +5%：
+p2 = 0.7016708397 * 1.05 = 0.7367543817
+ceil(n) = 2,574 per group；total = 5,148

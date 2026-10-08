@@ -69,7 +69,7 @@ recs_text = [
 limitations = [
     "数据没有价格和订单金额，无法计算 GMV、AOV、LTV 或金额型 RFM；本项目用购买行为次数和购买用户数替代。",
     "时间窗口只有 9 天，留存、复购和用户价值都只能描述这个观测窗口；首日用户缺少 11 月 25 日之前的行为，存在左截断。",
-    "严格漏斗是用户集合包含关系，不是严格行为序列；有 72,126 名购买用户没有收藏/加购行为，因此漏斗会低估购买用户总数。",
+    "集合交集归因漏斗只表示用户同时具备多层行为，不校验先后顺序；有 72,126 名购买用户没有收藏/加购行为，不能把它当成完整 session 路径。",
     "周末/工作日、白天/晚间是观察性准实验，用户会跨组重复出现；p 值很小主要来自样本量极大，Cohen's h 分别是 {wk.cohens_h:.3f} 和 {dn.cohens_h:.3f}，业务效应较小。",
     "类目只有匿名 ID，没有中文类目名；报告只能指出相对表现，不能直接给类目下业务命名。",
 ]
@@ -89,7 +89,7 @@ md.append('## 1. 数据与口径')
 md.append(f"- 原始行数：{quality['raw_rows']:,}；异常时间窗：{quality['invalid_window_rows']:,}；完全重复：{quality['exact_duplicate_rows_removed']:,}；清洗后：{quality['clean_rows']:,}。")
 md.append(f"- 时间范围：{quality['min_event_date']} 至 {quality['max_event_date']}，按 Asia/Shanghai 统一成业务日期。")
 md.append('- 行为字段：pv/浏览、cart/加购、fav/收藏、buy/购买。购买是行为事件，不是订单，数据无金额。')
-md.append('- 严格漏斗定义：下一层用户必须同时具备上一层行为，保证转化率是包含关系。')
+md.append('- 集合交集归因漏斗定义：下一层用户必须同时具备上一层行为，保证转化率不超过100%，但不校验行为先后顺序。')
 md.append('## 2. 转化漏斗')
 md.append(pd.DataFrame({'阶段':funnel.stage,'用户数':funnel.stage_users,'阶段转化率':funnel.stage_to_next,'相对首层':funnel.stage_from_first}).to_markdown(index=False))
 md.append(f"该表是集合交集归因漏斗，不是 session 转化率；整体 {overall_cvr:.2%}。用户级整体购买转化另有 {urow['overall']:.2%}，有向路径漏斗整体 {orow['overall']:.2%}。三种口径的分子分母定义不同，不能直接互相否定。")
@@ -132,13 +132,14 @@ md.append('根因判断：主要波动来自历史用户的晚间/下午购买�
 md.append('## 10. A/B 样本量口径')
 md.append(ab.to_markdown(index=False))
 md.append(f"32,538 对应的是 {ab1.baseline_rate:.2%} 基线下的绝对 +1.00 个百分点（相对提升 {ab1.mde_relative:.2%}），α=0.05、power=0.8、双侧、1:1。若业务只要求相对+5%，每组只需 {int(ab.iloc[1].n_per_group):,} 人，不能把两个MDE混用。")
+md.append('计算过程：H=2(arcsin√p1-arcsin√p2)，n=((z_(1-α/2)+z_(1-β))/H)^2；1:1双侧。完整过程见 `outputs/tables/22b_ab_sample_size_formula.txt`。')
 md.append('![AB样本量](outputs/figures/看板07_AB样本量.png)')
 md.append('## 11. 局限与不能下的结论')
 for x in limitations: md.append(f'- {x}')
 md.append('## 9. 复现与交付')
 md.append('- 全量清洗：`scripts/02_prepare_analysis_data.py`；全量分析：`scripts/04_analyze_business.py`；MySQL 导入与查询：`sql/` 与 `scripts/03_import_mysql.ps1`、`scripts/05_run_mysql_queries.py`。')
 md.append('- MySQL 与 DuckDB 对账：整体 KPI、行为结构、漏斗、日/小时、复购、周末/工作日和品类 Top20 共 237 项检查全部匹配。')
-md.append('- Power BI 交付：`powerbi/TaobaoDashboard.pbix`（可打开文件）、`powerbi/TaobaoDashboard.pbip`（源码项目）和 4 张 Desktop 实际渲染截图。')
+md.append('- Power BI 交付：`powerbi/TaobaoDashboard.pbix`（可打开文件）、`powerbi/TaobaoDashboard.pbip`（源码项目）和 5 张 Desktop 实际渲染截图。')
 md.append('- 原始 1 亿行文件不提交 GitHub；仓库只保留下载说明、SQL、脚本、汇总表和看板截图。')
 (REPORT/'淘宝用户行为全链路经营分析报告.md').write_text('\n\n'.join(md), encoding='utf-8-sig')
 
@@ -218,6 +219,7 @@ story.append(Paragraph('根因判断：主要波动来自历史用户的晚间/�
 story.append(PageBreak())
 story.append(Paragraph('9. A/B 样本量与护栏',h2))
 story.append(Paragraph(f"基线 {ab1.baseline_rate:.2%}，绝对MDE +1.00pp（相对 {ab1.mde_relative:.2%}），α=0.05、power=0.8、双侧、1:1，每组 {int(ab1.n_per_group):,} 人。相对+5%的场景每组 {int(ab.iloc[1].n_per_group):,} 人；简历保留保守的32,538口径。主指标为收藏/加购→购买，护栏为客均行为量、退款/退货率、投诉率、取消订阅率。",body))
+story.append(Paragraph('计算过程：H=2(arcsin√p1-arcsin√p2)，n=((z_(1-α/2)+z_(1-β))/H)^2；1:1双侧。完整过程见 outputs/tables/22b_ab_sample_size_formula.txt。',body))
 story.append(Image(str(F/'看板07_AB样本量.png'), width=176*mm, height=176*mm*8/15))
 story.append(Paragraph('复现入口',h2))
 story.append(Paragraph('脚本：02_prepare_analysis_data.py、04_analyze_business.py、05_run_mysql_queries.py；SQL：sql/03_core_queries.sql；Power BI：TaobaoDashboard.pbix/PBIP；MySQL 与 Python 237 项核心口径对账通过；原始 1 亿行文件不提交仓库。',body))

@@ -30,7 +30,7 @@ GROUP BY behavior_code
 ORDER BY behavior_code;
 
 -- name: funnel_strict
--- 严格漏斗：下一层必须同时包含上一层，所以转化率不会超过 100%。
+-- 集合交集归因漏斗：下一层必须同时包含上一层，所以转化率不会超过 100%。
 WITH flags AS (
   SELECT user_id,
          MAX(CASE WHEN behavior_code=1 THEN 1 ELSE 0 END) AS has_pv,

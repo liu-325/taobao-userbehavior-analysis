@@ -1,0 +1,9 @@
+{
+  "table": "taobao_userbehavior.fact_user_behavior",
+  "loaded_rows": 100095182,
+  "elapsed_sec": 419.4,
+  "source_tsv_bytes": 3554256586,
+  "data_gb_after_analyze": 4.18,
+  "index_gb_after_analyze": 1.78,
+  "note": "实际环境的 C 盘空间有限，只建立 idx_ts_beh 时间+行为索引；另外两个组合索引放在可选脚本。"
+}
