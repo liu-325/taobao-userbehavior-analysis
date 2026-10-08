@@ -1,0 +1,76 @@
+table RetentionWide
+	lineageTag: 4494d3c3-7d0a-5b91-beb9-60e265ab4234
+	column 用户群
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 用户群
+	column 任意留存_D1
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 任意留存_D1
+	column 任意留存_D3
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 任意留存_D3
+	column 任意留存_D7
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 任意留存_D7
+	column any_users_1
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: any_users_1
+	column any_users_3
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: any_users_3
+	column any_users_7
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: any_users_7
+	column eligible_users_1
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: eligible_users_1
+	column eligible_users_3
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: eligible_users_3
+	column eligible_users_7
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: eligible_users_7
+	column 购买留存_D1
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 购买留存_D1
+	column 购买留存_D3
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 购买留存_D3
+	column 购买留存_D7
+		dataType: double
+		summarizeBy: none
+		sourceColumn: 购买留存_D7
+	column purchase_users_1
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: purchase_users_1
+	column purchase_users_3
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: purchase_users_3
+	column purchase_users_7
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: purchase_users_7
+	partition RetentionWide-70b843e6 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/23_retention_wide_dashboard.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"用户群", type text},{"任意留存_D1", type number},{"任意留存_D3", type number},{"任意留存_D7", type number},{"any_users_1", Int64.Type},{"any_users_3", Int64.Type},{"any_users_7", Int64.Type},{"eligible_users_1", Int64.Type},{"eligible_users_3", Int64.Type},{"eligible_users_7", Int64.Type},{"购买留存_D1", type number},{"购买留存_D3", type number},{"购买留存_D7", type number},{"purchase_users_1", Int64.Type},{"purchase_users_3", Int64.Type},{"purchase_users_7", Int64.Type}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

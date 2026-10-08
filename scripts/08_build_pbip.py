@@ -47,6 +47,11 @@ table_files = {
  'TestResults':'11_statistical_tests.csv',
  'TopCategory':'top_category_dashboard.csv',
  'TimeSegment':'time_segment_dashboard.csv',
+ 'FunnelComparison':'15_funnel_definition_comparison.csv',
+ 'RetentionWide':'23_retention_wide_dashboard.csv',
+ 'AnomalyUserTime':'24_anomaly_user_time_dashboard.csv',
+ 'AnomalyTopNegative':'25_anomaly_top_negative_dashboard.csv',
+ 'ABSamplePlan':'22_ab_sample_size_plan.csv',
 }
 
 def csv_expr(table, file):
@@ -134,6 +139,17 @@ def bar(name,x,y,w,h,entity,category,value,aggregate=False,title='',sort_categor
 def funnel(name,x,y,w,h):
     field={'Measure':{'Expression':{'SourceRef':{'Entity':'FunnelOverall'}},'Property':'漏斗用户数'}}
     return {'$schema':'https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json','name':name,'position':{'x':x,'y':y,'z':4,'height':h,'width':w,'tabOrder':4},'visual':{'visualType':'funnel','query':{'queryState':{'Category':{'projections':[{'field':{'Column':{'Expression':{'SourceRef':{'Entity':'FunnelOverall'}},'Property':'stage'}},'queryRef':'FunnelOverall.stage','active':True}]},'Y':{'projections':[{'field':field,'queryRef':'FunnelOverall.漏斗用户数'}]}},'sortDefinition':{'sort':[{'field':field,'direction':'Descending'}]}},'drillFilterOtherVisuals':True}}
+def pivot(name,x,y,w,h,entity,rows,values,title=''):
+    row_proj=[]; val_proj=[]
+    for c in rows:
+        row_proj.append({'field':{'Column':{'Expression':{'SourceRef':{'Entity':entity}},'Property':c}},'queryRef':f'{entity}.{c}','active':True})
+    for c in values:
+        fld={'Aggregation':{'Expression':{'Column':{'Expression':{'SourceRef':{'Entity':entity}},'Property':c}},'Function':0}}
+        val_proj.append({'field':fld,'queryRef':f'Sum({entity}.{c})'})
+    v={'$schema':'https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json','name':name,'position':{'x':x,'y':y,'z':6,'height':h,'width':w,'tabOrder':6},'visual':{'visualType':'pivotTable','query':{'queryState':{'Rows':{'projections':row_proj},'Values':{'projections':val_proj}}},'drillFilterOtherVisuals':True}}
+    if title: v['visual']['visualContainerObjects']={'title':[{'properties':{'text':lit("'"+title+"'"),'show':lit('true')}}]}
+    return v
+
 def slicer(name,x,y,w,h,entity,column):
     f={'Column':{'Expression':{'SourceRef':{'Entity':entity}},'Property':column}}
     return {
@@ -169,6 +185,15 @@ pages['p3'] = page('p3','用户分层',[
 pages['p4'] = page('p4','品类与时段',[
  text_visual('p4t',30,15,1100,45,'时段分析：晚间购买率小幅高于白天，周末低于工作日',24),
  column('p4h',60,140,550,460,'HourlyMetrics','event_hour','buy_actions',True,'24小时购买行为'),column('p4w',670,140,550,460,'TimeSegment','day_type','buyer_rate',True,'周末 vs 工作日购买用户率')])
+
+pages['p5'] = page('p5','留存与归因',[
+ text_visual('p5t',30,15,1150,45,'留存与异动归因：D1/D3/D7 与 12/1 购买下降',24),
+ text_visual('p5n',30,60,1240,28,'D7只覆盖11/25-26 cohort；异动份额按负向贡献池解释，不用矩阵总计把不同维度相加。',10,'#687381'),
+ bar('p5r',40,120,360,230,'RetentionWide','用户群','任意留存_D1',True,'任意行为留存 D1'),
+ bar('p5b',420,120,360,230,'RetentionWide','用户群','购买留存_D7',True,'购买留存 D7（最早cohort）'),
+ bar('p5a',800,120,440,230,'AnomalyUserTime','分组','差值',True,'11/30→12/1 购买行为贡献'),
+ text_visual('p5s1',40,390,750,230,'留存摘要：全部用户 D1/D3/D7 任意行为 75.04%/73.83%/98.33%，购买 14.94%/14.65%/17.60%；高价值复购 D7 购买留存 36.58%。',13,'#17324d'),
+ text_visual('p5s2',820,390,420,230,'A/B：基线70.17%，绝对MDE+1pp，α=0.05，power=0.8，每组32,538人；相对+5%场景2,574人/组。',13,'#17324d')])
 
 page_order=[p['name'] for p in pages.values()]
 (REPORT/'definition'/'pages'/'pages.json').write_text(json.dumps({'$schema':'https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json','pageOrder':page_order,'activePageName':page_order[0]},indent=2),encoding='utf-8')

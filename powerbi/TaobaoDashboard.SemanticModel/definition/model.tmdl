@@ -15,3 +15,8 @@ ref table DaypartRates
 ref table TestResults
 ref table TopCategory
 ref table TimeSegment
+ref table FunnelComparison
+ref table RetentionWide
+ref table AnomalyUserTime
+ref table AnomalyTopNegative
+ref table ABSamplePlan

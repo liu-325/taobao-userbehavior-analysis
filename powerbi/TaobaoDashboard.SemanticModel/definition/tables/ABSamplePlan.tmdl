@@ -1,0 +1,56 @@
+table ABSamplePlan
+	lineageTag: 1d850647-852b-5bc4-8fed-92e4f5504621
+	column scenario
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scenario
+	column baseline_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: baseline_rate
+	column mde_absolute
+		dataType: double
+		summarizeBy: none
+		sourceColumn: mde_absolute
+	column mde_relative
+		dataType: double
+		summarizeBy: none
+		sourceColumn: mde_relative
+	column target_rate
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: target_rate
+	column alpha
+		dataType: double
+		summarizeBy: none
+		sourceColumn: alpha
+	column power
+		dataType: double
+		summarizeBy: none
+		sourceColumn: power
+	column n_per_group
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: n_per_group
+	column n_total
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: n_total
+	column primary_metric
+		dataType: string
+		summarizeBy: none
+		sourceColumn: primary_metric
+	column guardrails
+		dataType: string
+		summarizeBy: none
+		sourceColumn: guardrails
+	partition ABSamplePlan-c70cc481 = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/22_ab_sample_size_plan.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"scenario", type text},{"baseline_rate", type number},{"mde_absolute", type number},{"mde_relative", type number},{"target_rate", type number},{"alpha", type number},{"power", type number},{"n_per_group", Int64.Type},{"n_total", Int64.Type},{"primary_metric", type text},{"guardrails", type text}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

@@ -1,0 +1,2 @@
+﻿prev_date,curr_date,prev_buy_actions,curr_buy_actions,delta_buy_actions,delta_pct,negative_pool,positive_pool,top_negative_cell,note
+2017-11-30,2017-12-01,221459,210010,-11449,-0.05169805697668643,37614,26165,"{'category_id': 330316, 'hour_bucket': '06-11', 'user_structure': '历史已出现用户', 'prev_1130': 262, 'curr_1201': 51, 'delta': -211, 'negative_share': 0.005609613441803584, 'direction': 'negative', 'net_delta_share': 0.018429557166564765}",份额分母是负向贡献合计，不是净下降，避免正负抵消造成误解。

@@ -1,0 +1,40 @@
+table AnomalyUserTime
+	lineageTag: ae326c22-6a1d-5ac0-800e-9d064e8531ec
+	column 分组
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 分组
+	column 11月30日
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: 11月30日
+	column 12月1日
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: 12月1日
+	column 差值
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: 差值
+	column 维度
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 维度
+	column share_of_negative_pool
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: share_of_negative_pool
+	column share_of_net_delta
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: share_of_net_delta
+	partition AnomalyUserTime-9568c31d = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/24_anomaly_user_time_dashboard.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"分组", type text},{"11月30日", Int64.Type},{"12月1日", Int64.Type},{"差值", Int64.Type},{"维度", type text},{"share_of_negative_pool", type number},{"share_of_net_delta", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

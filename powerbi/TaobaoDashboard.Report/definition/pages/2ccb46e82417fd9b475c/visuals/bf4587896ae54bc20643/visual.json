@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "bf4587896ae54bc20643",
+  "position": {
+    "x": 40,
+    "y": 390,
+    "z": 1,
+    "height": 230,
+    "width": 750,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "留存摘要：全部用户 D1/D3/D7 任意行为 75.04%/73.83%/98.33%，购买 14.94%/14.65%/17.60%；高价值复购 D7 购买留存 36.58%。",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#17324d",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

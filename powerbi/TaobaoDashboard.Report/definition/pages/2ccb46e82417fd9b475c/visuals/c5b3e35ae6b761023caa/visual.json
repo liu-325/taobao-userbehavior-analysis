@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "c5b3e35ae6b761023caa",
+  "position": {
+    "x": 30,
+    "y": 60,
+    "z": 1,
+    "height": 28,
+    "width": 1240,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "D7只覆盖11/25-26 cohort；异动份额按负向贡献池解释，不用矩阵总计把不同维度相加。",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#687381",
+                      "fontWeight": "normal"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

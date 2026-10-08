@@ -1,0 +1,36 @@
+table AnomalyTopNegative
+	lineageTag: aeda7908-5009-592a-b1c0-f47be7253ea7
+	column dimension_label
+		dataType: string
+		summarizeBy: none
+		sourceColumn: dimension_label
+	column prev_1130
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: prev_1130
+	column curr_1201
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: curr_1201
+	column delta
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: delta
+	column negative_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: negative_share
+	column net_delta_share
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: net_delta_share
+	partition AnomalyTopNegative-3f67317e = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/25_anomaly_top_negative_dashboard.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"dimension_label", type text},{"prev_1130", Int64.Type},{"curr_1201", Int64.Type},{"delta", Int64.Type},{"negative_share", type number},{"net_delta_share", type number}})
+			in
+				Typed
+	annotation PBI_ResultType = Table

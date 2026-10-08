@@ -1,0 +1,178 @@
+{
+  "funnel": [
+    {
+      "口径": "用户级整体转化（只看最终是否购买）",
+      "top_stage": "全部活跃用户",
+      "top_users": 987991,
+      "middle_stage": "PV用户（独立集合）",
+      "middle_users": 984105,
+      "bottom_stage": "购买用户（全部购买者）",
+      "bottom_users": 672404,
+      "top_to_middle": 0.9960667658,
+      "middle_to_bottom": 0.6832644891,
+      "overall": 0.6805770498,
+      "说明": "分母为9天内有任意行为的用户；购买用户不要求先收藏/加购。"
+    },
+    {
+      "口径": "用户级PV→收藏/加购→购买（集合交集）",
+      "top_stage": "PV用户",
+      "top_users": 984105,
+      "middle_stage": "PV且收藏/加购用户",
+      "middle_users": 855498,
+      "bottom_stage": "PV+收藏/加购+购买用户",
+      "bottom_users": 600278,
+      "top_to_middle": 0.8693157742,
+      "middle_to_bottom": 0.7016708397,
+      "overall": 0.6099735292,
+      "说明": "三个阶段是包含关系，但不校验行为先后顺序。"
+    },
+    {
+      "口径": "有向路径归因漏斗（时间顺序）",
+      "top_stage": "PV用户",
+      "top_users": 984105,
+      "middle_stage": "PV后收藏/加购用户",
+      "middle_users": 850377,
+      "bottom_stage": "PV后收藏/加购再购买用户",
+      "bottom_users": 530839,
+      "top_to_middle": 0.8641120612,
+      "middle_to_bottom": 0.624239602,
+      "overall": 0.5394129691,
+      "说明": "按event_ts校验先后顺序，适合定位路径流失，但仍不是session转化。"
+    }
+  ],
+  "retention": [
+    {
+      "segment": "全部用户",
+      "day_n": 1,
+      "eligible_users": 987990,
+      "any_users": 741433,
+      "purchase_users": 147567,
+      "any_retention": 0.7504458547,
+      "purchase_retention": 0.1493608235
+    },
+    {
+      "segment": "全部用户",
+      "day_n": 3,
+      "eligible_users": 987717,
+      "any_users": 729196,
+      "purchase_users": 144687,
+      "any_retention": 0.7382640979,
+      "purchase_retention": 0.1464862911
+    },
+    {
+      "segment": "全部用户",
+      "day_n": 7,
+      "eligible_users": 864829,
+      "any_users": 850409,
+      "purchase_users": 152211,
+      "any_retention": 0.9833261836,
+      "purchase_retention": 0.1760012673
+    },
+    {
+      "segment": "窗口内复购用户",
+      "day_n": 1,
+      "eligible_users": 370274,
+      "any_users": 303852,
+      "purchase_users": 114490,
+      "any_retention": 0.8206139237,
+      "purchase_retention": 0.3092034547
+    },
+    {
+      "segment": "窗口内复购用户",
+      "day_n": 3,
+      "eligible_users": 370244,
+      "any_users": 304119,
+      "purchase_users": 113336,
+      "any_retention": 0.8214015622,
+      "purchase_retention": 0.3061116453
+    },
+    {
+      "segment": "窗口内复购用户",
+      "day_n": 7,
+      "eligible_users": 339122,
+      "any_users": 334500,
+      "purchase_users": 116355,
+      "any_retention": 0.9863706867,
+      "purchase_retention": 0.3431066106
+    },
+    {
+      "segment": "高价值复购用户",
+      "day_n": 1,
+      "eligible_users": 156022,
+      "any_users": 130067,
+      "purchase_users": 52041,
+      "any_retention": 0.8336452552,
+      "purchase_retention": 0.3335491149
+    },
+    {
+      "segment": "高价值复购用户",
+      "day_n": 3,
+      "eligible_users": 156010,
+      "any_users": 130386,
+      "purchase_users": 51855,
+      "any_retention": 0.8357541183,
+      "purchase_retention": 0.3323825396
+    },
+    {
+      "segment": "高价值复购用户",
+      "day_n": 7,
+      "eligible_users": 143981,
+      "any_users": 142710,
+      "purchase_users": 52671,
+      "any_retention": 0.9911724464,
+      "purchase_retention": 0.3658191011
+    }
+  ],
+  "anomaly": [
+    {
+      "prev_date": "2017-11-30",
+      "curr_date": "2017-12-01",
+      "prev_buy_actions": 221459,
+      "curr_buy_actions": 210010,
+      "delta_buy_actions": -11449,
+      "delta_pct": -0.051698057,
+      "negative_pool": 37614,
+      "positive_pool": 26165,
+      "top_negative_cell": {
+        "category_id": 330316,
+        "hour_bucket": "06-11",
+        "user_structure": "历史已出现用户",
+        "prev_1130": 262,
+        "curr_1201": 51,
+        "delta": -211,
+        "negative_share": 0.0056096134,
+        "direction": "negative",
+        "net_delta_share": 0.0184295572
+      },
+      "note": "份额分母是负向贡献合计，不是净下降，避免正负抵消造成误解。"
+    }
+  ],
+  "ab": [
+    {
+      "scenario": "绝对+1个百分点",
+      "baseline_rate": 0.7016708397,
+      "mde_absolute": 0.01,
+      "mde_relative": 0.0142516967,
+      "target_rate": 0.7116708397,
+      "alpha": 0.05,
+      "power": 0.8,
+      "n_per_group": 32538,
+      "n_total": 65076,
+      "primary_metric": "收藏/加购→购买转化率",
+      "guardrails": "客均行为量、退款/退货率、投诉率、取消订阅率"
+    },
+    {
+      "scenario": "相对+5%",
+      "baseline_rate": 0.7016708397,
+      "mde_absolute": 0.035083542,
+      "mde_relative": 0.05,
+      "target_rate": 0.7367543817,
+      "alpha": 0.05,
+      "power": 0.8,
+      "n_per_group": 2574,
+      "n_total": 5148,
+      "primary_metric": "收藏/加购→购买转化率",
+      "guardrails": "客均行为量、退款/退货率、投诉率、取消订阅率"
+    }
+  ]
+}

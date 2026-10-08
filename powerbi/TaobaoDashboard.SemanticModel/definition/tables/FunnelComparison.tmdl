@@ -1,0 +1,56 @@
+table FunnelComparison
+	lineageTag: b3dba065-9632-5c20-b375-8bbbae9614d8
+	column 口径
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 口径
+	column top_stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: top_stage
+	column top_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: top_users
+	column middle_stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: middle_stage
+	column middle_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: middle_users
+	column bottom_stage
+		dataType: string
+		summarizeBy: none
+		sourceColumn: bottom_stage
+	column bottom_users
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: bottom_users
+	column top_to_middle
+		dataType: double
+		summarizeBy: none
+		sourceColumn: top_to_middle
+	column middle_to_bottom
+		dataType: double
+		summarizeBy: none
+		sourceColumn: middle_to_bottom
+	column overall
+		dataType: double
+		summarizeBy: none
+		sourceColumn: overall
+	column 说明
+		dataType: string
+		summarizeBy: none
+		sourceColumn: 说明
+	partition FunnelComparison-864019ac = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(DataFolder & "/15_funnel_definition_comparison.csv"),[Delimiter=",",Encoding=65001,QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source,[PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted,{{"口径", type text},{"top_stage", type text},{"top_users", Int64.Type},{"middle_stage", type text},{"middle_users", Int64.Type},{"bottom_stage", type text},{"bottom_users", Int64.Type},{"top_to_middle", type number},{"middle_to_bottom", type number},{"overall", type number},{"说明", type text}})
+			in
+				Typed
+	annotation PBI_ResultType = Table
